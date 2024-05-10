@@ -144,8 +144,10 @@
         <ul>
             <li><img src="{{ url_for('.static', filename='profile.png') }}" alt="Logo"></li>
             <li><h5>{{full_name}}</h5></li>
+            <li><a class="nav-link" href="{{ url_for('updateAccount') }}">Account</a></li>
             <li><a class="nav-link" href="{{ url_for('chat') }}">Chat</a></li>
             <li><a class="nav-link" href="{{ url_for('post') }}">Post</a></li>
+            <li><a class="nav-link" href="{{ url_for('contact') }}">Contact-Us</a></li>
             <li><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
             <li><a class="nav-link btn btn-danger" href="{{ url_for('logout') }}">Logout</a></li>
         </ul>
@@ -153,6 +155,7 @@
 
     <!-- Main content -->
     <div class="main-content">
+        <h2>Welcome, {{ username }}!</h2>
         <h1>Welcome to the Dashboard, {{username }}</h1>
 
         <div class="container mt-5">

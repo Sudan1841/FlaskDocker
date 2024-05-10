@@ -11,24 +11,60 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="border">
-                    <div class="header">
-                        <h1 class="word">Register</h1>
-                    </div>
-                    <form action="{{ url_for('register') }}" method="post">
-                        {{ register_form.hidden_tag() }}
-                        {{ register_form.username(class="textbox form-control mb-3") }}
-                        {{ register_form.password(class="textbox form-control mb-3", placeholder="Enter Your Password") }}
-                        {{ register_form.password_confirm(class="textbox form-control mb-3", placeholder="Confirm Your Password") }}
-                        {{ register_form.register() }}
-                    </form>
-                    <p class="bottom">Already have an account? <a class="bottom" href="{{ url_for('login') }}">Sign In here</a></p>
+    <h2>Register</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
                 </div>
-            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.username.label }}
+            {{ form.username }}
         </div>
-    </div>
+        <div>
+            {{ form.password.label }}
+            {{ form.password }}
+        </div>
+        <div>
+            {{ form.confirm_password.label }}
+            {{ form.confirm_password }}
+        </div>
+        <div>
+            {{ form.email.label }}
+            {{ form.email }}
+        </div>
+        <div>
+            {{ form.full_name.label }}
+            {{ form.full_name }}
+        </div>
+        <div>
+            {{ form.phone.label }}
+            {{ form.phone }}
+        </div>
+        <div>
+            {{ form.country.label }}
+            {{ form.country }}
+        </div>
+        <div>
+            {{ form.gender.label }}
+            {{ form.gender }}
+        </div>
+        <div>
+            {{ form.birthday.label }}
+            {{ form.birthday }}
+        </div>
+        <button type="submit">Register</button>
+        <p class="bottom">Already have an account? <a class="bottom" href="{{ url_for('login') }}">Sign In here</a></p>
+    </form>
 </body>
 </html>
+
+
+
+
